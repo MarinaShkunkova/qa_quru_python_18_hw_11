@@ -21,6 +21,10 @@ class RegistrationPage:
         browser.driver.execute_script("$('#fixedban').remove()")
         browser.driver.execute_script("$('footer').remove()")
 
+    @allure.step('Проскроллить страницу')
+    def scroll_page(self):
+        browser.element('#submit').perform(command.js.scroll_into_view)
+
     @allure.step('Указать имя')
     def fill_first_name(self, value):
         browser.element('#firstName').should(be.blank).type(value).click()
